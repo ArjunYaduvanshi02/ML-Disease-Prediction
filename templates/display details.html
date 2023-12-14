@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Variables</title>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Display Variables</h1>
+
+    <!-- Create placeholders for the variables -->
+    <p>Variable 1: <span id="variable1"></span></p>
+    <p>Variable 2: <span id="variable2"></span></p>
+    <p>Variable 3: <span id="variable3"></span></p>
+    <p>Variable 4: <span id="variable4"></span></p>
+
+    <script>
+        // Use JavaScript to fetch the variables from the Flask backend
+        fetch('/get_variables')
+            .then(response => response.json())
+            .then(data => {
+                // Update the HTML elements with the received variables
+                document.getElementById('variable1').textContent = data.variable1;
+                document.getElementById('variable2').textContent = data.variable2;
+                document.getElementById('variable3').textContent = data.variable3;
+                document.getElementById('variable4').textContent = data.variable4;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
